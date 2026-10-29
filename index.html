@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Мелис Самаганов — финансовый консультант</title>
+  <meta name="description" content="Финансовый консультант, 10 лет в инвестициях. Бесплатный разбор бизнеса, бизнес-план и финмодель для банка, фонда или инвестора. Визы и стажировки за рубежом.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <!-- Замените домен после деплоя (см. README) — соцсети требуют абсолютный URL картинки -->
+  <link rel="canonical" href="https://samaganov.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://samaganov.vercel.app/">
+  <meta property="og:title" content="Мелис Самаганов — финансовый консультант">
+  <meta property="og:description" content="10 лет в инвестициях. Бесплатный разбор бизнеса: цифры, риски, где взять деньги.">
+  <meta property="og:image" content="https://samaganov.vercel.app/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Мелис Самаганов — финансовый консультант">
+  <meta name="twitter:description" content="10 лет в инвестициях. Бесплатный разбор бизнеса: цифры, риски, где взять деньги.">
+  <meta name="twitter:image" content="https://samaganov.vercel.app/assets/og.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.13"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: 'Manrope', system-ui, sans-serif;
+      --color-ink: #0b1f3a;
+      --color-ink-soft: #475569;
+      --color-accent: #047857;
+      --color-accent-hover: #065f46;
+      --radius-card: 14px;
+      --shadow-soft: 0 1px 2px rgba(11,31,58,.04), 0 6px 20px rgba(11,31,58,.06);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0b1220] text-ink dark:text-slate-100 font-sans antialiased">
+  <main id="app" class="mx-auto w-full max-w-[480px] px-4 pt-8 pb-10"></main>
+  <noscript><p style="padding:16px;text-align:center">Напишите в WhatsApp: <a href="https://wa.me/996557557977">+996 557 557 977</a></p></noscript>
+
+  <script src="config.js"></script>
+  <script>
+  (function () {
+    var C = window.CONFIG;
+
+    // --- UTM: берём из URL, иначе из прошлого визита ---
+    var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    var params = new URLSearchParams(location.search), utm = {};
+    try { utm = JSON.parse(localStorage.getItem('utm') || '{}'); } catch (e) {}
+    if (KEYS.some(function (k) { return params.has(k); })) {
+      utm = {};
+      KEYS.forEach(function (k) { if (params.get(k)) utm[k] = params.get(k); });
+      try { localStorage.setItem('utm', JSON.stringify(utm)); } catch (e) {}
+    }
+    var clean = function (s) { return String(s || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 24); };
+    var code = [clean(utm.utm_source), clean(utm.utm_content)].filter(Boolean).join('-') || C.defaultSourceCode;
+
+    // --- Аналитика: грузим только при наличии ID ---
+    var A = C.analytics;
+    if (A.ga4Id) {
+      var g = document.createElement('script');
+      g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(A.ga4Id);
+      document.head.appendChild(g);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date()); gtag('config', A.ga4Id);
+    }
+    if (A.metaPixelId) {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', A.metaPixelId); fbq('track', 'PageView');
+    }
+    function track(name) {
+      var data = { button: name, utm_source: utm.utm_source || '', utm_content: utm.utm_content || '' };
+      if (window.gtag) gtag('event', 'cta_click', Object.assign({ transport_type: 'beacon' }, data));
+      if (window.fbq) { fbq('trackCustom', 'CtaClick', data); fbq('track', 'Contact', data); }
+      (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: 'cta_click' }, data));
+    }
+
+    // --- Ссылки ---
+    var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+    function href(b) {
+      if (b.url) return b.url;
+      var num = (C.whatsapp[b.number] || C.whatsapp.main).replace(/\D/g, '');
+      return 'https://wa.me/' + num + '?text=' + encodeURIComponent(b.message + ' [' + code + ']');
+    }
+    var arrow = '<svg aria-hidden="true" class="h-5 w-5 shrink-0 opacity-60" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    function button(id, primary) {
+      var b = C.buttons[id];
+      var cls = primary
+        ? 'bg-accent hover:bg-accent-hover text-white shadow-soft min-h-[72px]'
+        : 'bg-white dark:bg-slate-800/70 hover:bg-slate-100 dark:hover:bg-slate-800 text-ink dark:text-slate-100 border border-slate-200 dark:border-slate-700 min-h-[64px]';
+      var sub = primary ? 'text-emerald-50' : 'text-ink-soft dark:text-slate-300';
+      return '<a data-track="' + id + '" href="' + esc(href(b)) + '" rel="noopener" class="flex items-center gap-3 rounded-card px-5 py-3 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ' + cls + '">'
+        + '<span class="flex-1"><span class="block font-bold ' + (primary ? 'text-lg' : 'text-base') + ' leading-snug">' + esc(b.title) + '</span>'
+        + '<span class="block text-sm mt-0.5 ' + sub + '">' + esc(b.subtitle) + '</span></span>' + arrow + '</a>';
+    }
+
+    var P = C.profile, html = '';
+    html += '<header class="text-center">'
+      + '<img src="' + esc(P.photo) + '" alt="' + esc(P.photoAlt) + '" width="112" height="112" fetchpriority="high" class="mx-auto h-28 w-28 rounded-full object-cover ring-4 ring-white dark:ring-slate-800 shadow-soft">'
+      + '<h1 class="mt-4 text-2xl font-extrabold tracking-tight">' + esc(P.name) + '</h1>'
+      + '<p class="mt-1 text-[15px] text-ink-soft dark:text-slate-300">' + esc(P.tagline) + '</p></header>';
+
+    html += '<ul class="mt-7 grid grid-cols-2 gap-3" aria-label="Результаты">' + C.proofs.map(function (p) {
+      return '<li class="rounded-card bg-white dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700 p-4 shadow-soft">'
+        + '<span class="block text-xl font-extrabold tracking-tight">' + esc(p.value) + '</span>'
+        + '<span class="mt-1 block text-[13px] leading-snug text-ink-soft dark:text-slate-300">' + esc(p.label) + '</span></li>';
+    }).join('') + '</ul>';
+
+    html += '<nav class="mt-7 flex flex-col gap-3" aria-label="Связаться">' + button('audit', true) + button('businessPlan') + button('course')
+      + (C.features.checklist ? button('checklist') : '') + '</nav>';
+
+    if (C.features.cases) {
+      html += '<section class="mt-10" aria-labelledby="cases-h"><h2 id="cases-h" class="text-lg font-extrabold">' + esc(C.casesTitle) + '</h2>'
+        + '<div class="mt-3 flex flex-col gap-3">' + C.cases.map(function (c) {
+          var L = C.caseLabels;
+          return '<article class="rounded-card bg-white dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700 p-5 shadow-soft">'
+            + '<h3 class="font-bold">' + esc(c.title) + '</h3><dl class="mt-3 space-y-2 text-sm">'
+            + ['task', 'done', 'result'].map(function (k) {
+              return '<div><dt class="text-xs font-semibold uppercase tracking-wide text-ink-soft dark:text-slate-400">' + esc(L[k]) + '</dt><dd class="mt-0.5">' + esc(c[k]) + '</dd></div>';
+            }).join('') + '</dl></article>';
+        }).join('') + '</div></section>';
+    }
+
+    html += '<section class="mt-10" aria-labelledby="mob-h"><div class="flex items-center gap-3"><span class="h-px flex-1 bg-slate-200 dark:bg-slate-700"></span>'
+      + '<h2 id="mob-h" class="text-xs font-semibold uppercase tracking-wider text-ink-soft dark:text-slate-400">' + esc(C.sectionMobility) + '</h2>'
+      + '<span class="h-px flex-1 bg-slate-200 dark:bg-slate-700"></span></div>'
+      + '<div class="mt-4 flex flex-col gap-3">' + button('visa') + button('channel') + '</div></section>';
+
+    html += '<footer class="mt-10 text-center text-xs text-ink-soft dark:text-slate-400">' + esc(C.footer) + '</footer>';
+    document.getElementById('app').innerHTML = html;
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('[data-track]');
+      if (a) track(a.getAttribute('data-track'));
+    });
+  })();
+  </script>
+</body>
+</html>
